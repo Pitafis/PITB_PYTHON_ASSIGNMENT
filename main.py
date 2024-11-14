@@ -13,15 +13,14 @@ import io
 from datetime import datetime
 import time
 from flask_cors import CORS
-from pyngrok import ngrok
 
 
 
-port_no = 5001
+
+
 app = Flask(__name__)
 CORS(app)
-ngrok.set_auth_token("2n9BEg8hdXXncaW2ELnTfmgOO7x_7HrgoSfNZzAaXugpWiiwP")
-public_url = ngrok.connect(port_no)
+
 
 app.secret_key = 'your_secret_key'
 
@@ -533,5 +532,4 @@ def signout():
 
 
 if __name__ == '__main__':
-    print(f"Public URL : {public_url}")
-    app.run(port=port_no)
+    app.run(debug=True)
