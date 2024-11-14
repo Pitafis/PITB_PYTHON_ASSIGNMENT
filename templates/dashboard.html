@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inventory Management Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            font-size: 2em;
+            color: #333;
+        }
+        .header p {
+            color: #666;
+            font-size: 0.9em;
+        }
+        .stats-container {
+            display: flex;
+            gap: 15px;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .stat-card {
+            flex: 1;
+            /* background-color: #fff; */
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border: black solid;
+
+        }
+        .stat-card h2 {
+            font-size: 1.2em;
+            margin: 5px 0;
+            color: #000000;
+        }
+        .stat-card p {
+            font-size: 2em;
+            font-weight: bold;
+        }
+        .charts-container {
+            display: flex;
+            gap: 20px;
+            justify-content: space-between;
+        }
+        .chart-card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            text-align: center;
+            border: black solid;
+
+        }
+
+        .chart-card1 {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            text-align: center;
+            border: black solid;
+
+        }
+        .chart-card h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .purchase-details,
+        .category-quotation {
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            margin-top: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        table th, table td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .load-more-btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.load-more-btn:hover {
+    background-color: #0056b3;
+}
+
+
+.header {
+    display: flex;
+    align-items: center; /* Centers image and text vertically */
+    gap: 15px; /* Space between image and text */
+}
+
+.logo-image {
+    width: 70px; /* Adjust width as needed */
+    height: auto; /* Keeps aspect ratio */
+}
+
+.header-text {
+    flex-grow: 1;
+}
+    </style>
+</head>
+<body>
+   
+    <div class="dashboard-container">
+        <!-- Header -->
+<div class="header">
+    <a href="{{ url_for('map') }}" target="_blank">
+        <img src="/static/images/world_logo.png" alt="Clickable Image" class="logo-image" />
+    </a>
+    <div class="header-text">
+        <h1>Inventory Management Dashboard</h1>
+        <p>This dashboard displays inventory management metrics, sales data, and product details.</p>
+    </div> 
+</div>
+        <!-- Statistics Cards Section -->
+<div class="stats-container">
+    <div class="stat-card">
+        <h2>Total Products</h2>
+        <p id="totalProducts">{{ total_products }}</p>
+    </div>
+    <div class="stat-card">
+        <h2>Total Sales</h2>
+        <p id="totalSales">{{ total_sales }}</p>
+    </div>
+    <div class="stat-card">
+        <h2>Total Orders</h2>
+        <p id="totalOrders">{{ total_orders }}</p>
+    </div>
+    <div class="stat-card">
+        <h2>Revenue</h2>
+        <p id="revenue">{{ revenue }}</p>
+    </div>
+    
+</div>
+
+        <!-- Charts -->
+        <div class="charts-container">
+            <div class="chart-card">
+                <h3>Total Sales per Product</h3>
+                <img id="salesChart" src="{{ url_for('sales_chart') }}" alt="Sales Report" style="width: 100%;">
+            </div>
+            <div class="chart-card">
+                <h3>Category Wise Sales (%)</h3>
+                <img id="categorySalesChart" src="{{ url_for('category_sales_chart') }}" alt="Category Wise Sales" style="width: 100%;">
+            </div>
+        </div>
+        <div class="chart-card2">
+            <h3>Monthly Sales</h3>
+            <img id="salesChart" src="{{ url_for('sales_by_month') }}" alt="Monthly Sales Chart" style="width: 100%; height: 461px; border: black solid;">
+        </div>
+        
+        <div class="purchase-details">
+            <h2>Purchase Details</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Country</th>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Category</th>
+                        <th>Total Price</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody id="purchaseTableBody">
+                    <!-- Initial 5 rows will be added here -->
+                </tbody>
+            </table>
+        
+            <!-- Load More Button -->
+            <div id="loadMoreContainer">
+                <button id="loadMoreBtn" class="load-more-btn">Load More</button>
+                <a href="{{ url_for('manage_stock') }}" id="manageStockBtn" class="load-more-btn">Manage Stock</a>
+            </div>
+        </div>
+    
+        
+     
+
+    <!-- Chart.js Library -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<!-- jQuery and AJAX Script -->
+<script>
+$(document).ready(function() {
+    let currentIndex = 0; // Track the current index for data loaded
+    const rowsPerPage = 5; // Number of rows to load at a time
+    let purchaseData = []; // Store the purchase data
+
+    // Fetch purchase data on page load using AJAX
+    $.ajax({
+        url: '/purchase_details',
+        method: 'GET',
+        success: function(response) {
+            if (response.purchase_data && response.purchase_data.length > 0) {
+                purchaseData = response.purchase_data; // Save the data in a variable
+                loadTableRows(); // Initially load the first set of rows
+            } else {
+                $('#purchaseTableBody').append('<tr><td colspan="7">No data available</td></tr>');
+            }
+        },
+        error: function() {
+            alert('Error loading purchase data');
+        }
+    });
+
+    // Function to load rows based on the current index
+    function loadTableRows() {
+        const tableBody = $('#purchaseTableBody');
+        const rowsToLoad = purchaseData.slice(currentIndex, currentIndex + rowsPerPage);
+
+        // Loop through the rows and append them to the table
+        rowsToLoad.forEach(function(purchase) {
+            const row = `<tr>
+                <td>${purchase.username}</td>
+                <td>${purchase.country}</td>
+                <td>${purchase.product}</td>
+                <td>${purchase.quantity}</td>
+                <td>${purchase.category}</td>
+                <td>$${purchase.total_price}</td>
+                <td>${purchase.date}</td>
+            </tr>`;
+            tableBody.append(row);
+        });
+
+        // Update the current index for the next load
+        currentIndex += rowsToLoad.length;
+
+        // Hide the Load More button if all rows are loaded
+        if (currentIndex >= purchaseData.length) {
+            $('#loadMoreBtn').hide();
+        }
+    }
+
+    // Load more data when the button is clicked
+    $('#loadMoreBtn').click(function() {
+        loadTableRows(); // Load more rows
+    });
+});
+
+
+
+    $(document).ready(function() {
+    // Fetch data for statistics and purchase details on page load
+    $.ajax({
+        url: '/display_data', // This route will return the data for statistics
+        method: 'GET',
+        success: function(response) {
+            // Update statistics cards
+            $('#totalProducts').text(response.total_products);
+            $('#totalSales').text(response.total_sales);
+            $('#totalOrders').text(response.total_orders);
+            $('#revenue').text(response.revenue);
+        },
+        error: function() {
+            alert('Error loading statistics data');
+        }
+    });
+});
+
+</script>
+
+
+</body>
+</html> 

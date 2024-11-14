@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory</title>
+    <style>
+        /* Basic reset and styling for a cleaner look */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background: linear-gradient(135deg, #ece9e6, #ffffff);
+            color: #333;
+        }
+        h2 {
+            font-size: 2rem;
+            color: #444;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .inventory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: auto;
+
+        }
+        .product-box {
+            position: relative;
+            /* background: #fff; */
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border: black solid;
+
+        }
+        .product-details {
+            font-size: 1rem;
+            color: #555;
+            margin-top: 12px;
+        }
+        form {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        label {
+            font-size: 0.9rem;
+            color: #555;
+            margin-right: 10px;
+        }
+        input[type="number"] {
+            padding: 6px;
+            width: 60px;
+            font-size: 0.9rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            text-align: center;
+            margin-right: 10px;
+        }
+        .product-buy {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        .product-buy:hover {
+            background-color: #0056b3;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .button-container button,
+        .button-container a button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            /* background-color: #0056b3; */
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        /* .button-container button:hover,
+        .button-container a button:hover {
+            background-color: #218838;
+        } */
+    </style>
+</head>
+<body>
+    <h2>Inventory</h2>
+
+    <div class="inventory-grid">
+        {% for product, details in inventory.items() %}
+        <div class="product-box">
+            <h3>{{ product }}</h3>
+            <p class="product-details">Price: ${{ details.price }}</p>
+            <p class="product-details">Stock: {{ details.stock }}</p>
+            <form action="/buy" method="POST">
+                <input type="hidden" name="product_index" value="{{ loop.index }}">
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity" min="1">
+                <button type="submit" class="product-buy">Buy</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="button-container">
+        <a href="/basket"><button class="product-buy">View Basket</button></a>
+        <button class="product-buy" onclick="location.href='/signout'">Sign Out</button>
+    </div>
+</body>
+</html>

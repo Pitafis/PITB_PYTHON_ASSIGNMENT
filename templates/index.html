@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Inventory Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            /* max-width: 600px; */
+            /* background-color: #fff; */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            width: 800px;
+            height: 500px;
+            border: black solid;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .options {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .options button {
+            padding: 12px 24px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+            margin: 0 10px;
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .options button:hover {
+            background-color: #0056b3;
+        }
+
+        .manage-button {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        .manage-button:hover {
+            background-color: #218838;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <button class="manage-button" onclick="location.href='/admin'">Admin</button>
+    <div class="container">
+       
+        <h1>Welcome to PITAFI'S Distribution</h1>
+        <img src="/static/images/5-Key.png" class="logo-image" />
+        <div class="options">
+            <button onclick="location.href='/signup'">Sign Up</button>
+            <button onclick="location.href='/signin'">Sign In</button>
+        </div>
+    </div>
+</body>
+
+</html>

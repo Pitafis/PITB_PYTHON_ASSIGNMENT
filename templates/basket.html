@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Basket</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: #fff;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .empty-basket {
+            text-align: center;
+            font-size: 18px;
+            color: #555;
+            margin-top: 20px;
+        }
+        .messages {
+            margin-top: 10px;
+        }
+        .success {
+            color: green;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Your Basket</h1>
+        {% if basket %}
+            <table>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total Price</th>
+                    <th>Action</th>
+                </tr>
+                {% for product, quantity in basket.items() %}
+                <tr>
+                    <td>{{ product }}</td>
+                    <td>{{ quantity }}</td>
+                    <td>${{ inventory[product]['price'] }}</td>
+                    <td>${{ quantity * inventory[product]['price'] }}</td>
+                    <td>
+                        <form action="{{ url_for('remove_from_basket', product_name=product) }}" method="POST">
+                            <button type="submit" class="btn">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+            <p>Total Basket Price: <strong>${{ total_basket_price }}</strong></p>
+            <div class="btn-container">
+                <a class="btn" href="{{ url_for('show_inventory') }}">Continue Shopping</a>
+                <form action="{{ url_for('buy_basket') }}" method="POST" style="display:inline;">
+                    <button type="submit" class="btn">Buy</button>
+                </form>
+            </div>
+        {% else %}
+            <div class="empty-basket">
+                <p>Your basket is empty.</p>
+                <a class="btn" href="{{ url_for('show_inventory') }}">Go to Inventory</a>
+            </div>
+        {% endif %}
+        <div class="messages">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <span class="{{ message[1] }}">{{ message[0] }}</span><br>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+</body>
+</html>

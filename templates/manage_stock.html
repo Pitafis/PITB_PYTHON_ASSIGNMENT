@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Inventory</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="number"] {
+            width: calc(100% - 12px);
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .messages {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Manage Inventory</h1>
+        <div class="messages">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul>
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+        </div>
+        
+        <!-- Add New Product Form -->
+        <h2>Add New Product</h2>
+        <form method="POST" action="{{ url_for('manage_stock') }}">
+            <label for="category_name">Category Name:</label>
+            <input type="text" id="category_name" name="category_name" required>
+            <input type="hidden" name="choice" value="1">
+            <label for="new_product">Product Name:</label>
+            <input type="text" id="new_product" name="new_product" required>
+            <label for="new_price">Price:</label>
+            <input type="number" id="new_price" name="new_price" step="0.01" required>
+            <label for="new_stock">Stock:</label>
+            <input type="number" id="new_stock" name="new_stock" min="0" required>
+            <button type="submit">Add Product</button>
+        </form>
+
+        <!-- Update Existing Product Form -->
+        <h2>Update Existing Product</h2>
+        <form method="POST" action="{{ url_for('manage_stock') }}">
+            <input type="hidden" name="choice" value="2">
+            <label for="product_name">Product Name:</label>
+            <input type="text" id="product_name" name="product_name" required>
+            <label for="new_price">New Price:</label>
+            <input type="number" id="new_price" name="new_price" step="0.01" required>
+            <label for="new_stock">New Stock:</label>
+            <input type="number" id="new_stock" name="new_stock" min="0" required>
+            <button type="submit">Update Product</button>
+        </form> 
+
+        <!-- Delete Product Form -->
+        <h2>Delete Product</h2>
+        <form method="POST" action="{{ url_for('manage_stock') }}">
+            <input type="hidden" name="choice" value="3">
+            <label for="product_name">Product Name:</label>
+            <input type="text" id="product_name" name="product_name" required>
+            <button type="submit">Delete Product</button>
+        </form>
+
+        <div style="text-align: center; margin-top: 20px;">
+            <form method="POST" action="{{ url_for('save_inventory_data') }}" style="display: inline;">
+                <button type="submit">Save Data</button>
+            </form>
+            <form method="POST" action="{{ url_for('load_inventory_data') }}" style="display: inline;">
+                <button type="submit">Load Data</button>
+            </form>
+        </div>
+
+        <a href="{{ url_for('show_inventory') }}">Back to Inventory</a>
+    </div>
+</body>
+</html>
