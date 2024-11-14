@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_e0ff50b93cadd88cb88e3434e7f00049 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_e0ff50b93cadd88cb88e3434e7f00049" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_e0ff50b93cadd88cb88e3434e7f00049 = L.map(
+                "map_e0ff50b93cadd88cb88e3434e7f00049",
+                {
+                    center: [-25.0, 134.0],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 2,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_988701e2c4dee0230192f3fddad0f07a = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_988701e2c4dee0230192f3fddad0f07a.addTo(map_e0ff50b93cadd88cb88e3434e7f00049);
+        
+    
+            var marker_e4e8978821097b6618b6c0284d797a24 = L.marker(
+                [-24.7761086, 134.755],
+                {}
+            ).addTo(map_e0ff50b93cadd88cb88e3434e7f00049);
+        
+    
+        var popup_bda478ca091795bfeccbf05ff276153d = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8359421f9300e97f7231ffc614739e1e = $(`<div id="html_8359421f9300e97f7231ffc614739e1e" style="width: 100.0%; height: 100.0%;">Australia: Total Sales : $144700.0</div>`)[0];
+                popup_bda478ca091795bfeccbf05ff276153d.setContent(html_8359421f9300e97f7231ffc614739e1e);
+            
+        
+
+        marker_e4e8978821097b6618b6c0284d797a24.bindPopup(popup_bda478ca091795bfeccbf05ff276153d)
+        ;
+
+        
+    
+    
+            marker_e4e8978821097b6618b6c0284d797a24.bindTooltip(
+                `<div>
+                     Australia
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6e36cd7936febe331256e52aa34cae51 = L.marker(
+                [61.0666922, -107.991707],
+                {}
+            ).addTo(map_e0ff50b93cadd88cb88e3434e7f00049);
+        
+    
+        var popup_578394731688241d9fb57132c3e497aa = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_28f6bab02174ab0c521c3317b7d989fb = $(`<div id="html_28f6bab02174ab0c521c3317b7d989fb" style="width: 100.0%; height: 100.0%;">Canada: Total Sales : $279850.0</div>`)[0];
+                popup_578394731688241d9fb57132c3e497aa.setContent(html_28f6bab02174ab0c521c3317b7d989fb);
+            
+        
+
+        marker_6e36cd7936febe331256e52aa34cae51.bindPopup(popup_578394731688241d9fb57132c3e497aa)
+        ;
+
+        
+    
+    
+            marker_6e36cd7936febe331256e52aa34cae51.bindTooltip(
+                `<div>
+                     Canada
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0cab3c867663e80c15724ed017e6fe99 = L.marker(
+                [46.603354, 1.8883335],
+                {}
+            ).addTo(map_e0ff50b93cadd88cb88e3434e7f00049);
+        
+    
+        var popup_cb97fbc016341f9222cde79ae9caaecf = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_2bfb8173712d9f6fbe24dda522ff2c44 = $(`<div id="html_2bfb8173712d9f6fbe24dda522ff2c44" style="width: 100.0%; height: 100.0%;">France: Total Sales : $58200.0</div>`)[0];
+                popup_cb97fbc016341f9222cde79ae9caaecf.setContent(html_2bfb8173712d9f6fbe24dda522ff2c44);
+            
+        
+
+        marker_0cab3c867663e80c15724ed017e6fe99.bindPopup(popup_cb97fbc016341f9222cde79ae9caaecf)
+        ;
+
+        
+    
+    
+            marker_0cab3c867663e80c15724ed017e6fe99.bindTooltip(
+                `<div>
+                     France
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_629e8e87e9d05a2aeac50d0d04d8db93 = L.marker(
+                [51.1638175, 10.4478313],
+                {}
+            ).addTo(map_e0ff50b93cadd88cb88e3434e7f00049);
+        
+    
+        var popup_e05043901013af2ab214ca00a0f01448 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_05168f1010079095e76bd52e022b323b = $(`<div id="html_05168f1010079095e76bd52e022b323b" style="width: 100.0%; height: 100.0%;">Germany: Total Sales : $193800.0</div>`)[0];
+                popup_e05043901013af2ab214ca00a0f01448.setContent(html_05168f1010079095e76bd52e022b323b);
+            
+        
+
+        marker_629e8e87e9d05a2aeac50d0d04d8db93.bindPopup(popup_e05043901013af2ab214ca00a0f01448)
+        ;
+
+        
+    
+    
+            marker_629e8e87e9d05a2aeac50d0d04d8db93.bindTooltip(
+                `<div>
+                     Germany
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3696274f8fc5ab0436cae169bf9350fa = L.marker(
+                [22.3511148, 78.6677428],
+                {}
+            ).addTo(map_e0ff50b93cadd88cb88e3434e7f00049);
+        
+    
+        var popup_a3161683bc1944701068bd9eaf6b0efd = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_589ef4d9c9204f39bac2e7243b9a5f95 = $(`<div id="html_589ef4d9c9204f39bac2e7243b9a5f95" style="width: 100.0%; height: 100.0%;">India: Total Sales : $225700.0</div>`)[0];
+                popup_a3161683bc1944701068bd9eaf6b0efd.setContent(html_589ef4d9c9204f39bac2e7243b9a5f95);
+            
+        
+
+        marker_3696274f8fc5ab0436cae169bf9350fa.bindPopup(popup_a3161683bc1944701068bd9eaf6b0efd)
+        ;
+
+        
+    
+    
+            marker_3696274f8fc5ab0436cae169bf9350fa.bindTooltip(
+                `<div>
+                     India
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_56dc392a9b6e59a1592d0cb87d585324 = L.marker(
+                [30.3308401, 71.247499],
+                {}
+            ).addTo(map_e0ff50b93cadd88cb88e3434e7f00049);
+        
+    
+        var popup_35a0eebbcd077238d421c1cb96032ae2 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_46af7c0b1a9b6184dd36db448a97b4c8 = $(`<div id="html_46af7c0b1a9b6184dd36db448a97b4c8" style="width: 100.0%; height: 100.0%;">Pakistan: Total Sales : $4600.0</div>`)[0];
+                popup_35a0eebbcd077238d421c1cb96032ae2.setContent(html_46af7c0b1a9b6184dd36db448a97b4c8);
+            
+        
+
+        marker_56dc392a9b6e59a1592d0cb87d585324.bindPopup(popup_35a0eebbcd077238d421c1cb96032ae2)
+        ;
+
+        
+    
+    
+            marker_56dc392a9b6e59a1592d0cb87d585324.bindTooltip(
+                `<div>
+                     Pakistan
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d6e70f471b3068e63fe48e7189a48582 = L.marker(
+                [-28.8166236, 24.991639],
+                {}
+            ).addTo(map_e0ff50b93cadd88cb88e3434e7f00049);
+        
+    
+        var popup_23dd11640745fae26a93547cda51944b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_68f1ad6cb749e24ba45c90d93a6f252a = $(`<div id="html_68f1ad6cb749e24ba45c90d93a6f252a" style="width: 100.0%; height: 100.0%;">South Africa: Total Sales : $2700.0</div>`)[0];
+                popup_23dd11640745fae26a93547cda51944b.setContent(html_68f1ad6cb749e24ba45c90d93a6f252a);
+            
+        
+
+        marker_d6e70f471b3068e63fe48e7189a48582.bindPopup(popup_23dd11640745fae26a93547cda51944b)
+        ;
+
+        
+    
+    
+            marker_d6e70f471b3068e63fe48e7189a48582.bindTooltip(
+                `<div>
+                     South Africa
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3cf1e97da18452b8c645784394cf645a = L.marker(
+                [39.7837304, -100.445882],
+                {}
+            ).addTo(map_e0ff50b93cadd88cb88e3434e7f00049);
+        
+    
+        var popup_c9e74165ac3800101f353f08a537df19 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_80db01a40471b2d91450363d1f606fa6 = $(`<div id="html_80db01a40471b2d91450363d1f606fa6" style="width: 100.0%; height: 100.0%;">USA: Total Sales : $26150.0</div>`)[0];
+                popup_c9e74165ac3800101f353f08a537df19.setContent(html_80db01a40471b2d91450363d1f606fa6);
+            
+        
+
+        marker_3cf1e97da18452b8c645784394cf645a.bindPopup(popup_c9e74165ac3800101f353f08a537df19)
+        ;
+
+        
+    
+    
+            marker_3cf1e97da18452b8c645784394cf645a.bindTooltip(
+                `<div>
+                     USA
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a3fe6fd3046719bd04d3959e7a968d1b = L.marker(
+                [54.7023545, -3.2765753],
+                {}
+            ).addTo(map_e0ff50b93cadd88cb88e3434e7f00049);
+        
+    
+        var popup_363fdf6e85d27f00ca698b23c4c8db86 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9788c282b872b5b321cf0a220a09f5c4 = $(`<div id="html_9788c282b872b5b321cf0a220a09f5c4" style="width: 100.0%; height: 100.0%;">United Kingdom: Total Sales : $215350.0</div>`)[0];
+                popup_363fdf6e85d27f00ca698b23c4c8db86.setContent(html_9788c282b872b5b321cf0a220a09f5c4);
+            
+        
+
+        marker_a3fe6fd3046719bd04d3959e7a968d1b.bindPopup(popup_363fdf6e85d27f00ca698b23c4c8db86)
+        ;
+
+        
+    
+    
+            marker_a3fe6fd3046719bd04d3959e7a968d1b.bindTooltip(
+                `<div>
+                     United Kingdom
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>
+</html>
